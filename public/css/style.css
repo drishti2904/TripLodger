@@ -1,0 +1,276 @@
+/* style.css */
+body {
+    font-family: 'Poppins', sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color:#fff4f4!important; /* Changed background to white */
+    color: #333; /* Keep dark text for contrast */
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.container{
+    flex:1;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    max-width: 1140px;
+    margin: 0 auto;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/*Navbar*/
+
+.navbar{
+    height: 5rem;
+    background-color:#f0c3c3; 
+    width:100% !important;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.fa-compass{
+    color:#8b0000; /* Dark red accent */
+    font-size:2rem;
+}
+
+.nav-link{
+    color:#222 !important; /* Dark text */
+    font-size: 1.25rem !important;
+    font-weight: 400 !important;
+}
+
+.nav-link:hover{
+    color:#a33434 !important;
+}
+
+#logo{
+    color:#991919;
+    font-style: italic;
+    font-size: 20px;
+}
+
+/*footer*/
+.f-info{
+    text-align: center;
+    height:8rem;
+    background-color:rgb(242, 240, 240);
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center; /* Changed to center for better vertical alignment */
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.f-info-links, .f-info-socials{
+    width: 100%;
+    text-align: center; /* Center links and socials */
+}
+
+.f-info-links a{
+    text-decoration:none;
+    color:#222; /* Dark text */
+    transition: color 0.3s ease;
+}
+
+.f-info-links a:hover{
+    text-decoration:underline;
+    color: #ff6347; /* Tomato on hover */
+}
+
+.f-info-socials i{
+    font-size: 1.5rem;
+    margin: 0.5rem;
+    color: #444;
+    transition: color 0.3s ease;
+}
+
+.f-info-socials i:hover {
+    color: #ff6347; /* Tomato on hover */
+}
+
+/*Card adjustments for listing page */
+.row{
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1rem 0;
+    margin-top: 1rem;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Spacing between cards */
+    padding: 1rem; /* Padding around the card container */
+    background: none;
+    box-shadow: none;
+    justify-content: flex-start; /* Align items to the start, allowing wrapping */
+}
+
+.card {
+    border-radius: 2rem; /* Rounded corners for the card */
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for definition */
+    flex: 0 1 calc(30% - 1.5rem); /* Reduced base width for smaller cards (adjust as needed) */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 992px) {
+    .card-container .card {
+        flex: 0 1 calc(45% - 1.5rem); /* Two cards per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .card-container .card {
+        flex: 0 1 calc(100% - 1.5rem); /* One card per row on smaller screens */
+    }
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
+}
+
+.card-img-top {
+    height: 180px; /* Further reduced image height for smaller cards */
+    object-fit: cover;
+    width: 100%;
+    border-radius: 0.75rem 0.75rem 0 0; /* Rounded top corners */
+}
+
+.card-body {
+    padding: 0.6rem 0.8rem; /* Adjusted padding inside the smaller card body */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push content to top and bottom */
+    flex-grow: 1; /* Allow body to take up remaining space */
+}
+
+.card-text p{
+    font-weight:400;
+    font-size: 0.85rem; /* Slightly smaller font for text in smaller cards */
+    margin-bottom: 0.4rem;
+}
+
+.listing-link{
+    text-decoration: none ;
+    border:none !important;
+}
+
+.list{
+    margin-left:4rem !important;
+}
+
+/*Card Effect*/
+.card-img-overlay:hover{
+    opacity:0.3;
+    background-color:white;
+}
+
+.add-btn{
+    background-color: #cd5c5c  !important; /* Indian red */
+    color: white !important; /* Ensure text is visible on the button */
+    border: none;
+    padding: 0.4rem 0.8rem; /* Smaller button padding for smaller cards */
+    border-radius: 0.3rem; /* Rounded for buttons */
+    font-weight: 500;
+    font-size: 0.8rem; /* Smaller button text */
+    text-decoration: none;
+}
+
+.add-btn:hover{
+    background-color:#f08080  !important; /* Light coral */
+}
+
+.btns{
+    display:flex;
+    justify-content: center; /* Align buttons to the start */
+    gap: 0.4rem; /* Reduced gap between buttons for smaller cards */
+    margin-top: 0.6rem; /* Adjusted top margin for smaller cards */
+    flex-wrap: wrap !important;
+}
+
+.btns a,
+.btns form button {
+    margin: 0;
+    padding: 0.3rem 0.6rem; /* Even smaller button padding */
+    font-size: 0.75rem; /* Even smaller button text */
+    font-weight: 500;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* For <a> tags */
+    border: none; /* For button elements */
+    color: #fff;
+    background-color:#cd5c5c; /* Indian red */
+}
+
+.btns form {
+    display: inline;
+}
+
+.btns a:hover,
+.btns form button:hover {
+    background-color:#df9191 !important; /* Light coral */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Style for the review paragraphs */
+.review-paragraph {
+    margin-bottom: 0.6rem; /* Reduced bottom margin */
+    padding-bottom: 0.6rem; /* Reduced bottom padding */
+}
+
+.review-paragraph:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.review-paragraph h6 {
+    font-size: 0.85rem; /* Smaller heading */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.1rem;
+}
+
+.review-paragraph p {
+    font-size: 0.75rem; /* Smaller paragraph text */
+    color: #555;
+    margin-bottom: 0.25rem;
+}
+
+.review-paragraph i {
+    font-size: 0.65rem; /* Smaller icon */
+    margin-right: 0.1rem;
+}
+
+.card {
+    flex: 0 1 calc(25% - 2rem); /* Decreased base width for more spacing */
+}
+
+.card-container {
+    gap: 5rem; /* Increased spacing */
+}
+

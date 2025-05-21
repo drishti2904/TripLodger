@@ -1,0 +1,111 @@
+<% layout("/layouts/boilerplate")%>
+<div class="row mt-3 fade-in justify-content-center">
+  <div class="col-md-8">
+    <h3 class="text-center mb-4"><%= listing.title || "Untitled Listing" %></h3>
+
+    <div class="card shadow fade-in">
+      <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
+      <div class="card-body">
+        <p class="card-text">
+          Owned by <i><%= listing.owner?.username || 'Drishti Porwal' %></i>
+        </p>
+
+        <%= listing.description || "No description provided." %><br/>
+        &#8377;<%= listing.price ? listing.price.toLocaleString("en-IN") : "N/A" %><br/>
+        <%= listing.location || "Location not specified" %><br/>
+        <%= listing.country || "Country not specified" %><br/>
+      </div>
+    </div>
+
+    <% if (currUser && listing.owner._id.equals(currUser._id)) { %>
+    <div class="btns fade-in mt-3">
+      <a href="/listings/<%= listing._id%>/edit" class="btn btn-dark">Edit Listing</a>
+      <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE" class="d-inline">
+        <button class="btn btn-dark">Delete Listing</button>
+      </form>
+    </div>
+    <% } %>
+
+    <div class="mt-5">
+      <% if (currUser) { %>
+      <h4>Leave a Review</h4>
+      <form action="/listings/<%= listing.id %>/reviews" method="POST" novalidate class="needs-validation">
+        <div class="mb-3">
+          <label class="form-label d-block">Rating</label>
+          <div class="star-rating">
+            <% for (let i = 5; i >= 1; i--) { %>
+              <input type="radio" id="star<%= i %>" name="review[rating]" value="<%= i %>" />
+              <label for="star<%= i %>" title="<%= i %> stars">&#9733;</label>
+            <% } %>
+          </div>
+          <small id="selected-rating" class="text-muted">No rating selected</small>
+        </div>
+
+        <div class="mb-3">
+          <label for="comment" class="form-label">Comments</label>
+          <textarea name="review[comment]" id="comment" cols="30" rows="3" class="form-control" required></textarea>
+          <div class="invalid-feedback">Please submit some comments for review</div>
+        </div>
+        <button class="btn btn-dark">Submit</button>
+      </form>
+      <% } %>
+
+      <hr />
+      <p><b>All Reviews</b></p>
+      <% for(review of listing.reviews) { %>
+        <div class="mb-2 review-paragraph">
+          <h6 class="fw-bold mb-1">@<%= review.author.username %></h6>
+          <p class="mb-1"><%= review.comment %></p>
+          <div>
+            <% for(let i = 1; i <= 5; i++) { %>
+              <% if(i <= review.rating) { %>
+                <i class="fa fa-star text-warning"></i>
+              <% } else { %>
+                <i class="fa fa-star text-secondary"></i>
+              <% } %>
+            <% } %>
+          </div>
+          <form method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE">
+            <button class="btn btn-sm btn-dark">Delete</button>
+          </form>
+          <hr class="my-2">
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .star-rating {
+    direction: rtl;
+    font-size: 1.8rem;
+    display: inline-flex;
+  }
+
+  .star-rating input[type="radio"] {
+    display: none;
+  }
+
+  .star-rating label {
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+    margin: 0 2px;
+  }
+
+  .star-rating input[type="radio"]:checked ~ label,
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    color: #ffc107;
+  }
+</style>
+
+
+<script>
+  document.querySelectorAll('input[name="review[rating]"]').forEach((radio) => {
+    radio.addEventListener('change', function () {
+      document.getElementById('selected-rating').textContent = `You selected ${this.value} star${this.value > 1 ? 's' : ''}`;
+    });
+  });
+</script>
