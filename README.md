@@ -26,15 +26,18 @@ TripLodger is a dynamic and intuitive web application designed to connect travel
 
 * **Responsive Design:**  
   Enjoy a consistent and engaging experience across various devices.  
-  ![Responsive Design Preview](public/images/readme/responsive.png)
+  ![Responsive Design Preview](![image](https://github.com/user-attachments/assets/ede3ab73-66c2-4dd7-8d57-3543f8a36457)
+)
 
 * **Flash Messages:**  
   Receive instant feedback on user actions (e.g., successful sign-up, login errors).  
-  ![Flash Message Example](public/images/readme/flash-message.png)
+  ![Flash Message Example](![image](https://github.com/user-attachments/assets/4bfe084b-6746-4cb4-bb06-3d1c0f31b3a5)
+) (![image](https://github.com/user-attachments/assets/42610df3-774f-42a3-b39e-441d506d25a3)
+)
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 TripLodger is built on a robust and scalable stack:
 
@@ -65,7 +68,7 @@ TripLodger is built on a robust and scalable stack:
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 Follow these steps to get a local copy of TripLodger up and running on your machine for development and testing purposes.
 
